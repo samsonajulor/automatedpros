@@ -88,10 +88,8 @@ It achieves this by using React's state management through the `useState` hook t
 ## Mouse-Based Background Color
 
 - Different background colors based on mouse position:
-  - Blue:
-    ![Green1 Background](public/1reen1.png)
   - Green:
-    ![Green Background](public/green.png)
-  - Purple:
+    ![Green1 Background](public/green3.png)
+
+  - Green:
     ![Green2 Background](public/green2.png)
-    
