@@ -1,4 +1,4 @@
-# Automated Repositories
+# Automatedpros
 
 This repository contains a React/Next.js frontend application with various features related to blockchain wallet integration, real-time time display, and creative mouse-based background color changes. Below, you will find instructions on how to use this repository along with descriptions of the implemented features and their corresponding images.
 
