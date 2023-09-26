@@ -1,0 +1,32 @@
+@import '../../../theme/mixins.scss';
+
+.text {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+	& > button {
+		margin-top: 32px;
+	}
+}
+
+.horizontalRule {
+  width: 100%;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 20px 0;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+	transform: scale(0.9);
+
+	@include sm() {
+		transform: scale(1);
+	}
+}
