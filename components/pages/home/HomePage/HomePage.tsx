@@ -6,13 +6,18 @@ import styles from './HomePage.module.scss';
 import { IHomePage } from './HomePage.type';
 
 const HomePage: FC<IHomePage> = () => {
-  const [backgroundColor, setBackgroundColor] = useState('black');
+  const [backgroundColor, setBackgroundColor] = useState('green');
 
   useEffect(() => {
-    const handleMouseMove = (event: any) => {
+      const handleMouseMove = (event: any) => {
       const xPercentage = (event.clientX / window.innerWidth) * 100;
       const yPercentage = (event.clientY / window.innerHeight) * 100;
-      const color = `rgb(${xPercentage}%, ${yPercentage}%, 100%)`;
+
+      const greenShade = Math.round((xPercentage + yPercentage) / 2);
+
+      const greenValue = Math.min(255, Math.max(0, greenShade));
+
+      const color = `rgb(0, ${greenValue}, 0)`;
 
       setBackgroundColor(color);
     };
@@ -22,6 +27,7 @@ const HomePage: FC<IHomePage> = () => {
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
     };
+
   }, []);
 
 	return (
