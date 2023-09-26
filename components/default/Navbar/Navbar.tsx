@@ -8,7 +8,7 @@ const Navbar = () => {
 	return (
 		<nav className={styles.navbar}>
 			<Text type={ETextType.h1} size={ESize.s}>
-				automatedrepos
+				automatedpros
 			</Text>
 
 			<div>

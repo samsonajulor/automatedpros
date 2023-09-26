@@ -11,7 +11,7 @@ export default function CreateNextjsDappDocument() {
 				<meta name='apple-mobile-web-app-title' content='Create NextJs Dapp' />
 				<meta
 					name='description'
-					content='AutomatedRepos'
+					content='automatedpros'
 				/>
 			</Head>
 			<body>

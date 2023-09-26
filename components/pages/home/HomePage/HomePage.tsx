@@ -33,8 +33,8 @@ const HomePage: FC<IHomePage> = () => {
         transition: 'background-color 0.3s ease',
       }}>
 			<Meta
-				title='automatedrepos'
-				description='automatedrepos'
+				title='automatedpros'
+				description='automatedpros'
 			/>
 
 			<div>

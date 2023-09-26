@@ -13,13 +13,13 @@ const CreateNextjsDapp = ({ Component, pageProps }: AppProps) => {
 
 				<link rel='apple-touch-icon' href='/icon.png'></link>
 
-				<meta name='application-name' content='AutomatedRepos' />
+				<meta name='application-name' content='automatedpros' />
 				<meta name='apple-mobile-web-app-capable' content='yes' />
 				<meta name='apple-mobile-web-app-status-bar-style' content='default' />
 				<meta name='apple-mobile-web-app-title' content='Create Nextjs Dapp' />
 				<meta
 					name='description'
-					content='AutomatedRepos'
+					content='automatedpros'
 				/>
 
 				<meta name='theme-color' content='#1E1F20' />
