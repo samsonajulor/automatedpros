@@ -4,10 +4,9 @@ import ShowTime from '@components/default/ShowTime';
 import { FC, useEffect, useState } from 'react';
 import styles from './HomePage.module.scss';
 import { IHomePage } from './HomePage.type';
-import { AnySoaRecord } from 'dns';
 
 const HomePage: FC<IHomePage> = () => {
-  const [backgroundColor, setBackgroundColor] = useState('#00ff00'); // Initial background color (green)
+  const [backgroundColor, setBackgroundColor] = useState('black');
 
   useEffect(() => {
     const handleMouseMove = (event: any) => {
@@ -31,7 +30,7 @@ const HomePage: FC<IHomePage> = () => {
         width: '100vw',
         height: '100vh',
         backgroundColor: backgroundColor,
-        transition: 'background-color 0.3s ease', // Smooth color transition
+        transition: 'background-color 0.3s ease',
       }}>
 			<Meta
 				title='automatedrepos'

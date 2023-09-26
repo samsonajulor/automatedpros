@@ -31,17 +31,13 @@ const Web3Provider: FC<{ children: ReactNode }> = ({ children }) => {
 	const connectWallet = useCallback(
 		async (wallet: IWallet) => {
 			try {
-				// detect injected wallet providers
 				const injected = injectedModule();
-				// Frame wallet provider
+
 				const frame = frameModule();
 
-				// the list of wallet providers displayed in the BlockNative modal
 				const walletProviders = [injected, frame];
 
-				// Wallet Connect related code (is optional)
 				if (process.env.WALLET_CONNECT_PROJECT_ID) {
-					// Wallet Connect wallet provider
 					const walletConnect = walletConnectModule({
 						projectId: process.env.WALLET_CONNECT_PROJECT_ID,
 						dappUrl: window.location.origin,
@@ -59,7 +55,6 @@ const Web3Provider: FC<{ children: ReactNode }> = ({ children }) => {
 						}
 					});
 
-					// add Wallet Connect wallet provider to the list of providers
 					walletProviders.push(walletConnect);
 				}
 
@@ -83,7 +78,6 @@ const Web3Provider: FC<{ children: ReactNode }> = ({ children }) => {
 						autoConnectLastWallet: false,
 						removeWhereIsMyWalletWarning: true
 					},
-					// activate or note the bottom right blocknative widget
 					accountCenter: {
 						desktop: {
 							enabled: false
@@ -118,7 +112,17 @@ const Web3Provider: FC<{ children: ReactNode }> = ({ children }) => {
 	 * get and update the network id
 	 */
 	const getNetworkId = async (chainId?: number) => {
-		const networkId = chainId || (await window?.ethereum?.request({ method: 'eth_chainId' })) || undefined;
+		const networkId = chainId || (await window?.ethereum?.request({ method: 'eth_chainId' }, {
+			chainId: 1,
+			chainName: 'Ethereum Mainnet',
+			nativeCurrency: {
+				name: 'Ether',
+				symbol: 'ETH',
+				decimals: 18
+			},
+			rpcUrls: ['https://mainnet.infura.io/v3/'],
+			blockExplorerUrls: ['https://etherscan.io/']
+		})) || undefined;
 
 		if (networkId) {
 			if (`${networkId}`.startsWith('0x')) {
@@ -150,17 +154,16 @@ const Web3Provider: FC<{ children: ReactNode }> = ({ children }) => {
 		connectWallet(savedWallet);
 	}, [connectWallet]);
 
-	// update isValidNetwork when networkId changes
 	useEffect(() => {
 		setIsValidNetwork(checkIfNetworkIsValid(networkId || 0));
 	}, [networkId]);
 
-	// check if wallet is connected when the app starts or on page refresh
+
 	useEffect(() => {
 		checkIfWalletIsConnected();
 	}, [checkIfWalletIsConnected]);
 
-	// setup provider listeners
+
 	useEffect(() => {
 		if (!provider) return;
 
@@ -174,12 +177,10 @@ const Web3Provider: FC<{ children: ReactNode }> = ({ children }) => {
 					//setAddress(Address.from(accounts[0]));
 					console.log('accountsChanged', accounts);
 				} else {
-					// statement called when user disconnects their wallet from the wallet itself
 					disconnectWallet();
 				}
 			};
 
-			// set up listeners
 			provider.on('chainChanged', handleChainChanged);
 			provider.on('accountsChanged', handleAccountsChanged);
 
@@ -192,14 +193,14 @@ const Web3Provider: FC<{ children: ReactNode }> = ({ children }) => {
 		}
 	}, [disconnectWallet, provider]);
 
-	/* debug */
+
 	useEffect(() => {
 		if (!accounts[0]) return;
 
 		console.debug('address', accounts[0].address);
 	}, [accounts]);
 
-	/* debug */
+
 	useEffect(() => {
 		console.debug('networkId', networkId);
 	}, [networkId]);
@@ -209,9 +210,9 @@ const Web3Provider: FC<{ children: ReactNode }> = ({ children }) => {
 	}, [isValidNetwork]);
 
 	/* debug */
-	useEffect(() => {
-		getNetworkId();
-	}, []);
+	// useEffect(() => {
+	// 	getNetworkId();
+	// }, []);
 
 	return (
 		<Web3Context.Provider

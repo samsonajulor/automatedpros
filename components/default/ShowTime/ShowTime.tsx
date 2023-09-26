@@ -39,7 +39,7 @@ const ShowTime: FC<IShowTime> = () => {
 	return (
     <div className={styles.container}>
       <Button onClick={handleClick} color={EColor.yellow}>
-        {showTime ? 'Hide Time' : 'Show Time'}
+        {showTime ? 'Hide Time' : 'Show Current Time'}
       </Button>
       <br />
       <hr className={styles.horizontalRule} />
