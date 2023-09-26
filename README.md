@@ -1,4 +1,3 @@
-
 ## automatedrepos
 
 A. Task description:
@@ -28,3 +27,7 @@ vi. 2.b
 vii. 2.c
 d. Take screenshot of the code of implementation of points 1 and 2 and paste here. Take screen
 shot of the page with different cursor positions and paste here.
+
+## How to use this repository
+- RUN `npm install`
+- RUN `npm run dev`
